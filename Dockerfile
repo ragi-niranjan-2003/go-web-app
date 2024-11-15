@@ -3,9 +3,7 @@ FROM golang:1.18 AS builder
 
 WORKDIR /app
 COPY . .
-RUN go mod init go-web-app
-RUN go mod tidy
-RUN go build -o main .
+RUN go mod init go-web-app && go mod tidy && go build -o main .
 
 # Final stage
 FROM alpine:latest
